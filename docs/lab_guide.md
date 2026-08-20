@@ -111,7 +111,10 @@ Cách khắc phục (chọn 1 trong 3):
 
 ## Exit ticket
 
-Mỗi nhóm trả lời 2 câu:
+1. **Case nào nên dùng multi-agent? Vì sao?**
 
-1. Case nào nên dùng multi-agent? Vì sao?
-2. Case nào không nên dùng multi-agent? Vì sao?
+   Nên dùng khi bài toán có thể tách thành các vai trò thực sự khác nhau, chẳng hạn tìm kiếm nguồn, đánh giá bằng chứng và tổng hợp câu trả lời có trích dẫn. Multi-agent cũng phù hợp khi cần lưu trạng thái trung gian để debug, theo dõi trách nhiệm của từng bước hoặc ưu tiên độ đầy đủ và khả năng kiểm chứng hơn tốc độ. Trong benchmark của lab, workflow multi-agent tăng điểm quality proxy từ 6,39 lên 8,06 và citation coverage từ 0% lên 39%, cho thấy lợi ích rõ nhất ở các nhiệm vụ research cần nguồn và audit trail.
+
+2. **Case nào không nên dùng multi-agent? Vì sao?**
+
+   Không nên dùng cho câu hỏi đơn giản, tác vụ một bước, quy trình xác định hoặc trường hợp một model đã có đủ context để trả lời tốt. Cũng không nên dùng khi latency và chi phí là ràng buộc chính, vì chi phí điều phối có thể lớn hơn phần chất lượng tăng thêm. Benchmark hiện tại cho thấy multi-agent chậm khoảng 2,7 lần (23,90 giây so với 8,87 giây) và tốn chi phí ước tính khoảng 5 lần ($0,005341 so với $0,001064). Ngoài ra, nhiều agent không tự động bảo đảm tính đúng: nguồn tìm kiếm yếu hoặc kết luận sai vẫn có thể được truyền tiếp qua các bước dù citation ID hợp lệ.

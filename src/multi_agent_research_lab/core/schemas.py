@@ -35,9 +35,14 @@ class SourceDocument(BaseModel):
 
 class BenchmarkMetrics(BaseModel):
     run_name: str
+    query: str = ""
     latency_seconds: float
     estimated_cost_usd: float | None = None
+    input_tokens: int = Field(default=0, ge=0)
+    output_tokens: int = Field(default=0, ge=0)
+    total_tokens: int = Field(default=0, ge=0)
     quality_score: float | None = Field(default=None, ge=0, le=10)
     citation_coverage: float | None = Field(default=None, ge=0, le=1)
     failure_rate: float | None = Field(default=None, ge=0, le=1)
+    trace_url: str | None = None
     notes: str = ""
